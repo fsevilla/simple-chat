@@ -1,0 +1,24 @@
+<div *ngIf="!nombre" class="content">
+    <h2>Bienvenido</h2>
+    <h3>Introduce tu nombre</h3>
+    <form (click)="guardarNombre()">
+        <input type="text" [(ngModel)]="tempName" name="name">
+        <button>Guardar</button>
+    </form>
+</div>
+<div *ngIf="nombre" class="content">
+    <div id="messages">
+        <div *ngFor="let item of messages" [ngClass]="{'owned': item.owned}">
+            <span>
+                {{item.message}}
+                <br>
+                <em *ngIf="!item.owned">Eviado por: {{item.name}}, el {{item.date | date:'dd/MM/YY'}}</em>
+                <em *ngIf="item.owned">Eviado el 1/2/2023</em>
+            </span>
+        </div>
+    </div>
+    <form>
+        <input type="text" [(ngModel)]="texto" name="mensaje">
+        <button (click)="enviarMensaje()">Enviar</button>
+    </form>
+</div>
